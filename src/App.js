@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import Todos from "./components/Todos";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import MainLayout from "./layouts/MainLayout";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./themes";
+import Todo from "./components/Todos";
+import { TodoProvider } from "./contexts/todo.context";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <TodoProvider>
+        <MainLayout>
+          <Todo />
+        </MainLayout>
+      </TodoProvider>
+      <ToastContainer />
+    </ThemeProvider>
   );
 }
 
